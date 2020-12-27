@@ -2,7 +2,7 @@
 /* Globals */
 html,
 body {
-  background-color: rgba(255,241,224,.6);
+  background-color: rgba(255, 241, 227,.6);
   text-shadow: none;
   background-repeat: repeat;
   background-size: cover;
@@ -26,6 +26,10 @@ h1, h2, h3, h4, h5, h6 {
 .h-center {
     margin-left: auto;
     margin-right: auto;
+}
+
+.btn {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .btn-primary {
@@ -64,7 +68,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar.scrolled {
-    background-color:#FFF1E0 !important;
+    background-color:rgb(255, 241, 227) !important;
     transition: background-color 200ms linear;
   }
 
@@ -331,6 +335,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .img-boba:hover .img-hover {
+    display: block;
+}
+
+/* salesforce */
+.img-salesforce {
+    height: 100%;
+    width: 100%;
+    color: #FFF7EE;
+    background-image: url("images/salesforce-pic.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.img-salesforce:hover {
+    background-color: #4A4C71;
+    background-image: none;
+}
+
+.img-salesforce:hover .img-hover {
     display: block;
 }
 

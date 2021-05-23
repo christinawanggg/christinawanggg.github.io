@@ -92,7 +92,17 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Jumbotron */
 .jumbotron {
-    background-color: #4A4C71; 
+   
+}
+
+.sf-hero {
+    background-image: url("images/sf-hero.jpeg"); 
+    background-size: cover;
+}
+
+.background-tint {
+    background-color:#4A4C71;
+    background-blend-mode: multiply;
 }
 
 .title {
@@ -354,6 +364,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .img-salesforce:hover .img-hover {
+    display: block;
+}
+
+/* ifp */
+.img-ifp {
+    height: 100%;
+    width: 100%;
+    color: #FFF7EE;
+    background-image: url("images/ifp-pic.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.img-ifp:hover {
+    background-color: #4A4C71;
+    background-image: none;
+}
+
+.img-ifp:hover .img-hover {
     display: block;
 }
 

@@ -367,6 +367,25 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
 }
 
+/* dibs */
+.img-dibs {
+    height: 100%;
+    width: 100%;
+    color: #FFF7EE;
+    background-image: url("images/dibs-pic.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.img-dibs:hover {
+    background-color: #4A4C71;
+    background-image: none;
+}
+
+.img-dibs:hover .img-hover {
+    display: block;
+}
+
 /* ifp */
 .img-ifp {
     height: 100%;

@@ -7,16 +7,21 @@ body {
   background-repeat: repeat;
   background-size: cover;
   color: black;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans';
   font-size: large;
   scroll-behavior: smooth;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Italiana', serif;
     font-weight: 700;
     /* text-transform: uppercase; */
     letter-spacing: 2px;
+}
+
+p {
+    font-family: 'Plus Jakarta Sans';
+
 }
 
 .width-80 {
@@ -184,6 +189,12 @@ h1, h2, h3, h4, h5, h6 {
     padding: 7% 0;
 }
 
+.work-heading {
+    font-family: 'Plus Jakarta Sans';
+    font-weight: 600;
+    font-size: 20px;
+}
+
 @media screen and (max-width: 600px) {
     /* Place the timelime to the left */
     .work {
@@ -307,6 +318,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .img-launch:hover .img-hover {
+    display: block;
+}
+
+/* FOTE */
+.img-fote {
+    height: 100%;
+    width: 100%;
+    color: #FFF7EE;
+    background-image: url("images/fote-pic.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.img-fote:hover {
+    background-color: #4A4C71;
+    background-image: none;
+}
+
+.img-fote:hover .img-hover {
     display: block;
 }
 

@@ -383,7 +383,7 @@ p {
     height: 100%;
     width: 100%;
     color: #FFF7EE;
-    background-image: url("images/salesforce-pic.png");
+    background-image: url("images/salesforce-pic-intern.png");
     background-size: cover;
     background-position: center;
 }
@@ -394,6 +394,25 @@ p {
 }
 
 .img-salesforce:hover .img-hover {
+    display: block;
+}
+
+/* salesforce ft */
+.img-salesforce-ft {
+    height: 100%;
+    width: 100%;
+    color: #FFF7EE;
+    background-image: url("images/salesforce-pic-ft.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.img-salesforce-ft:hover {
+    background-color: #4A4C71;
+    background-image: none;
+}
+
+.img-salesforce-ft:hover .img-hover {
     display: block;
 }
 

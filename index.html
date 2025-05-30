@@ -3,8 +3,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,400,700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=gambarino@400,500,600,700&display=swap" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -15,7 +15,8 @@
     <script src="index.js" defer></script>
 
     <!-- Font Awesome Icon Library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/v4-shims.min.css" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/cw-logo.png" sizes="196x196">
@@ -25,14 +26,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="All about Christina Wang - experience, projects, interests, and more.">
+    <meta name="description" content="All about Christina Wang - experience, interests, and more.">
     <meta name="author" content="Christina Wang">
     <title>Christina Wang | Personal Website</title>
-    <meta property="og:image" content="images/landing-page.png" /> 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://thechristinawang.com/" />
     <meta property="og:title" content="Christina Wang's Personal Website" />
-    <meta property="og:description" content="Check out my portfolio for more about me, my internships, projects, and more." />
+    <meta property="og:description" content="Check out my website for more about me, my experience,and more." />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHQ3W6H4PN"></script>
@@ -45,351 +45,76 @@
     </script>
 </head>
 
-<!-- Nav Bar Start -->
-<header>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light h-center nav-width">
-        <a class="navbar-brand" href="">
-            <img src="images/cwmono.png" width="65" height="43" class="d-inline-block align-top" alt="Christina Wang">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse nav-right" id="navbarNav">
-          <ul class="navbar-nav" style="font-weight: 300">
-            <li class="nav-item active">
-              <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#work">My Work</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://christinawanggg.medium.com/">Blog</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-</header>
-<!-- Nav Bar End -->
-
-
-
-<body style="font-family: 'glacialIndifference', sans-serif;">
-    <!-- Jumbotron start -->
-    <div class="jumbotron jumbotron-fluid sf-hero background-tint" 
+<body>
+    <!-- Header start -->
+    <div class="header" 
         style=" height:100vh;
                 display: flex;
                 text-align: center;
                 align-items: center;">
         <div class="container">
-          <h1 class="title"><b>Hi! <br>I'm Christina Wang.</b></h1>
+          <h1 class="title">Hi! <br>I'm Christina Wang.</h1>
           <p class="lead">
-                I’m a software engineer based in San Francisco passionate about technology, entrepreneurship, and building products. 
-          </p>
+                I'm an AI Product Engineer based in San Francisco passionate about building products that make life easier and help people spend more time on what truly matters.
+            </p>
           <p class="mobile">
-              Find me on 
-              <a href="https://github.com/christinawanggg" target="_blank" ><i class="fa fa-github fa-lg icon" target="_blank"></i></a>
-              <a href="https://www.linkedin.com/in/christinawanggg/" target="_blank" ><i class="fa fa-linkedin fa-lg icon" target="_blank"></i></a>
-              <a href="https://twitter.com/christiinawang" target="_blank" ><i class="fa fa-twitter fa-lg icon" target="_blank"></i></a>
-              <a href="mailto:christinawang2000@gmail.com" target="_blank" ><i class="fa fa-envelope fa-lg icon" target="_blank"></i></a>
-              <a href="https://christinawanggg.medium.com/" target="_blank"><i class="fa fa-medium fa-lg icon" target="_blank"></i></a>
-              <a href="https://www.instagram.com/thehappy20s/" target="_blank"><i class="fa fa-instagram fa-lg icon" target="_blank"></i></a>
+              <a href="https://github.com/christinawanggg" target="_blank" onclick="gtag('event', 'social_click', {'platform': 'github'});"><i class="fab fa-github fa-lg icon" target="_blank"></i></a>
+              <a href="https://www.linkedin.com/in/christinawanggg/" target="_blank" onclick="gtag('event', 'social_click', {'platform': 'linkedin'});"><i class="fab fa-linkedin fa-lg icon" target="_blank"></i></a>
+              <a href="https://twitter.com/christiinawang" target="_blank" onclick="gtag('event', 'social_click', {'platform': 'twitter'});"><i class="fab fa-twitter fa-lg icon" target="_blank"></i></a>
+              <a href="mailto:christinawang2000@gmail.com" target="_blank" onclick="gtag('event', 'social_click', {'platform': 'email'});"><i class="fas fa-envelope fa-lg icon" target="_blank"></i></a>
+              <a href="https://christinawanggg.medium.com/" target="_blank" onclick="gtag('event', 'social_click', {'platform': 'medium'});"><i class="fab fa-medium fa-lg icon" target="_blank"></i></a>
             </p>
         </div>
     </div>
-    <!-- Jumbotron end -->
+    <!-- Header end -->
 
-    <!-- About Me -->
-  <div class="about h-center about-width" id="about" style="font-family: 'glacialIndifference', sans-serif;">
-        <div class="row">
-            <div class="col-sm-12 col-md-5 h-center">
-                <img src="images/cw-pic.JPG" class="headshot" alt="Christina Wang headshot"><br><br>
-            </div>
-            <div class="col-sm-12 col-md-7 h-center justify-content-center" style="padding: 20px 10px;">
-                <span>
-                    <h2>Hi! I'm Christina</h2>
-                    <p>
-                        I currently work as a software engineer at Salesforce. I graduated from Swarthmore College with a degree in Computer Science and Economics. At Swarthmore, I was the president of 
-                        <a href="https://swarthmorelaunchdeck.com" target="_blank" style="color:#4A4C71">LaunchDeck</a> (the largest technology + entrepreneurship club on campus), taught a <a href="https://www.cs.swarthmore.edu/courses/CS17/S22/" target="_blank" style="color:#4A4C71">technical entrepreneurship course</a> for the Computer Science department, and was a <a href="https://swarthmoreathletics.com/sports/womens-tennis/roster/christina-wang/5302" target="_blank" style="color:#4A4C71">member of the varsity women’s tennis team</a>. 
-                        I’ve also worked in both the operating and investing side of startups in product management (at Hatch), business development (at Postmates), and venture capital (at True Ventures and Idea Fund Partners). 
-                        <br><br>
-                        My goal is to utilize my product-driven, technical skills and entrepreneurial drive to build products that are challenging the status quo or solving a novel issue and building a community in the process. 
-                        In my free time, you can find me traveling, doing something outdoors (like hiking, tennis, and running), making ice cream, or hanging out with my dog.
-                        <br><br>
-                        I love meeting new people! If you want to collaborate on a project, learn more about my 
-                        work, or chat about anything, please reach out.
-                    </p>
-                    <!-- <button type="button" class="btn btn-primary"><a href="resume-ChristinaWang.pdf" target="_blank" class="btn-text">View My Resume <i class="fa fa-download"></i></a></button> -->
-                </span>
-            </div>
-        </div>
-    </div>
-    <!-- About Me end -->
-
-
-    <!-- My Work (Experiences + Projects) -->
-    <div class="work" id="work" style="position: relative">
+    <!-- Experience Timeline -->
+    <div class="work" id="work">
         <div class="container">
-            <h2>My Work</h2>
-            <p class="lead">
-                Here's more about my experience and projects.
-            </p>
-            <div class="row h-center">
-                <!-- Salesforce -->
-                <div class="col-md-4 work-box">
-                    <div class="img-salesforce-ft">
-                        <div class="hover-pic" style="visibility: hidden">
-                            <img src="images/salesforce-pic-ft.png" alt="Salesforce SWE Full Time">
-                        </div>
-                        <div class="img-hover centered" style="width: 85%" >
-                            <span>
-                                <p>
-                                    <b class="work-heading">Salesforce - Software Engineer</b><br>
-                                    <i>September 2022 - Present</i><br> 
-                                    Full-stack engineer working on customer-facing APIs, microservices, and custom components on the partner enablement product for Sales Cloud.
-                                </p>
-                            </span> 
-                        </div>
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <h3 class="timeline-title">Founding Engineer</h3>
+                        <h4 class="timeline-subtitle">Stealth AI</h4>
+                        <div class="timeline-date">2025 - Present</div>
+                        <p class="timeline-description">
+                            Scheduling
+                        </p>
                     </div>
                 </div>
-                <!-- Salesforce end -->
 
-                <!-- FOTE -->
-                <div class="col-md-4 work-box">
-                    <a href="https://www.cs.swarthmore.edu/courses/CS17/S22/" target="_blank">
-                        <div class="img-fote">
-                            <div class="hover-pic" style="visibility: hidden">
-                                <img src="images/fote-pic.png" alt="CS17: Foundations of Technological Entrepreneurship Instructor">
-                            </div>
-                            <div class="img-hover centered" style="width: 87%">
-                                <span>
-                                    <p>
-                                        <b class="work-heading">Swarthmore CS Department - Course Instructor</b><br>
-                                        Developed curriculum and taught a 0.5 credit course of 20 students for the Swarthmore College Computer Science Department 
-                                        called CS 17: Foundations of Technical Entrepreneurship.
-                                    </p>
-                                </span> 
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- FOTE end -->
-
-                <!-- Salesforce -->
-                <div class="col-md-4 work-box">
-                        <div class="img-salesforce">
-                            <div class="hover-pic" style="visibility: hidden">
-                                <img src="images/salesforce-pic-intern.png" alt="Salesforce SWE Internship">
-                            </div>
-                            <div class="img-hover centered" style="width: 85%" >
-                                <span>
-                                    <p>
-                                        <b class="work-heading">Salesforce - Software Engineer Intern</b><br>
-                                        <i>Summer 2021</i><br> 
-                                        Implemented authoring via image URLs for prompts and walkthroughs in Salesforce’s Lightning Platform to optimize org space usage for internal and external users.
-                                    </p>
-                                </span> 
-                            </div>
-                        </div>
-                </div>
-                <!-- Salesforce end -->
-
-                <!-- IFP -->
-                <div class="col-md-4 work-box">
-                    <a href="ifp" target="_blank">
-                        <div class="img-ifp">
-                            <div class="hover-pic" style="visibility: hidden">
-                                <img src="images/ifp-pic.png" alt="Idea Fund VC Internship">
-                            </div>
-                            <div class="img-hover centered" style="width: 87%" >
-                                <span>
-                                    <p>
-                                        <b class="work-heading">Idea Fund Partners - Venture Capital Analyst Intern</b><br>
-                                        <i>Spring 2021</i><br> 
-                                        Sourcing and deal review of 100+ startups for an early-stage B2B, Prop Tech, and Analytics fund.<br>
-                                        Wrote a thesis mapping out the LTL logistics and supply chain space.<br>
-
-                                    </p>
-                                </span> 
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- IFP end -->
-
-                <!-- Hatch -->
-                <div class="col-md-4 work-box">
-                    <a href="hatch.html" target="_blank">
-                        <div class="img-hatch">
-                            <div class="hover-pic" style="visibility: hidden">
-                                <img src="images/hatch-pic.png" alt="Hatch PM Internship">
-                            </div>
-                            <div class="img-hover centered" style="width: 87%" >
-                                <span>
-                                    <p>
-                                        <b class="work-heading">Hatch - Product Manager Intern</b><br>
-                                        <i>Summer 2020</i><br>
-                                        Spearheaded a push notifications strategy on Hatch's mobile app and
-                                        increasing employee productivity by 72% through creating a company wiki.
-                                    </p>
-                                </span> 
-                            </div>
-                        </div>
-                </div>
-                <!-- Hatch end -->
-
-                <!-- True Ventures -->
-                <div class="col-md-4 work-box">
-                    <a href="https://trueventures.com/blog/meet-the-2020-tec-fellows" target="_blank">
-                        <div class="img-true">
-                            <div class="hover-pic" style="visibility: hidden">
-                                <img src="images/true-pic.png" alt="True Ventures Fellowship">
-                            </div>
-                            <div class="img-hover centered" style="width: 87%">
-                                <span>
-    
-                                    <p>
-                                        <b class="work-heading">True Ventures - TEC Fellow</b><br>
-                                        <i>Summer 2020</i><br>
-                                        True is an early-stage VC with investments in Peloton, Fitbit, Ring, etc.<br>
-                                        Insight into VC and the principles of early-stage (seed/Series A) investing. <br>
-                                        Matched to intern at Hatch, Series A sleep tech startup.
-                                    </p>
-                                </span> 
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- True Ventures end -->
-
-                <!-- Postmates -->
-                <div class="col-md-4 work-box">
-                    <div class="img-postmates">
-                        <div class="hover-pic" style="visibility: hidden">
-                            <img src="images/postmates-pic.png" alt="Postmates BD Internship">
-                        </div>
-                        <div class="img-hover centered" style="width: 85%" >
-                            <span>
-                                <p>
-                                    <b class="work-heading">Postmates - Business Development Intern</b><br>
-                                    <i>Summer 2019</i><br>
-                                    Analyzed new verticals for the Delivery as a Service product to expand into.
-                                    <br>
-                                    Prospected, pitched, and outreached to 2 national mid-market 
-                                    retailers, launching in 4 markets.
-                                </p>
-                            </span> 
-                        </div>
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <h3 class="timeline-title">Software Engineer</h3>
+                        <h4 class="timeline-subtitle">Salesforce</h4>
+                        <div class="timeline-date">2022 - 2025</div>
+                        <p class="timeline-description">
+                            Reinvented the Salesforce setup experience to give admins their time back.
+                        </p>
                     </div>
                 </div>
-                <!-- Postmates end -->
-        
-                <!-- LaunchDeck -->
-                <div class="col-md-4 work-box">
-                    <a href="http://swarthmorelaunchdeck.com/" target="_blank">
-                        <div class="img-launch">
-                            <div class="hover-pic" style="visibility: hidden">
-                                <img src="images/launchdeck-pic.png" alt="LaunchDeck President">
-                            </div>
-                            <div class="img-hover centered" style="width: 87%">
-                                <span>
-                                    <p>
-                                        <b class="work-heading">LaunchDeck - President</b><br>
-                                        Revamped Swarthmore's largest entrepreneurship and technology club from 0 to 160+.
-                                        <br>
-                                        Coordinated 10+ speaker events, launched a $2500 venture fund, and a mentorship program with 24 participants. 
 
-                                    </p>
-                                </span> 
-                            </div>
-                        </div>
-                    </a>
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <h3 class="timeline-title">Swarthmore College</h3>
+                        <h4 class="timeline-subtitle">CS + Econ</h4>
+                        <p class="timeline-description">
+                            Varsity Tennis, LaunchDeck, and more.
+                        </p>
+                    </div>
                 </div>
-                <!-- LaunchDeck end -->
-
-                <!-- air.ly -->
-                <div class="col-md-4 work-box">
-                    <a href="https://devpost.com/software/draft-jutwd3" target="_blank">
-                        <div class="img-airly">
-                            <div class="hover-pic" style="visibility: hidden">
-                                <img src="images/airly-pic.png" alt="air.ly PennApps Project">
-                            </div>
-                            <div class="img-hover centered" style="width: 87%" >
-                                <span>
-                                    <p>
-                                        <b class="work-heading">air.ly</b><br>
-                                        <i>Flask, Python, JavaScript</i><br>
-                                        <b>🥇First Place Winner, 2020 PennApps Hackathon Hack for Resilience Route</b> <br>
-                                        Your one-stop-shop for finding safe outdoor retreats in real-time during the wildfires.
-                                    </p>
-                                </span> 
-                            </div>
-                        </div>  
-                    </a>
-                </div>
-                <!-- air.ly end -->
-
-                <!-- Boba Finder App-->
-                <!-- <div class="col-md-4 work-box">
-                    <a href="https://github.com/christinawanggg/boba-finder" target="_blank">
-                        <div class="img-boba">
-                            <div class="hover-pic" style="visibility: hidden">
-                                <img src="images/boba-pic.png" alt="Boba Finder App Project">
-                            </div>
-                            <div class="img-hover centered" style="width: 85%" >
-                                <span>
-                                    <p>
-                                        <b class="work-heading">Boba Finder App</b><br>
-                                        <i>React Native, JavaScript</i><br>
-                                        Utilizing the Yelp API to find nearby boba shops to your current location.
-                                    </p>
-                                </span> 
-                            </div>
-                        </div>  
-                    </a>
-                </div> -->
-                <!-- Boba Finder end -->
-
-                <!--Dibs App-->
-                <!-- <div class="col-md-4 work-box">
-                    <a href="" target="_blank">
-                        <div class="img-dibs">
-                            <div class="hover-pic" style="visibility: hidden">
-                                <img src="images/dibs-pic.png" alt="Dibs Project">
-                            </div>
-                            <div class="img-hover centered" style="width: 85%" >
-                                <span>
-                                    <p>
-                                        <b style="font-size: 20px">Dibs</b><br>
-                                        <i>React, Firebase</i><br>
-                                        Building a social platform for startup enthusiasts to make mock venture investments, explore new startups, and connect with each other.
-                                    </p>
-                                </span> 
-                            </div>
-                        </div>  
-                    </a>
-                </div> -->
-                <!-- Dibs end -->
             </div>
         </div>
     </div>
-    <!-- My Work end -->
-
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p class="mobile" style="text-align: center; font-weight: 300;">
-            <a href="">
-                <img src="images/image.png" width="55" height="35" alt="">
-            </a>
-            <br><br>
-            Made with ♡ by Christina Wang &copy; 2023
-        </p>
-    </footer>
+    <!-- Experience Timeline end -->
 </body>
 
+<footer class="footer">
+    <p class="mobile" style="text-align: center; font-weight: 300;">
+        Open to collaborating or chatting—feel free to reach out!
+    </p>
+</footer>
 
 <!-- BOOTSTRAP JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

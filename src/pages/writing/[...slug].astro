@@ -2,13 +2,24 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Essay from '../../components/Essay.astro';
+import EssayList from '../../components/EssayList.astro';
 
 export async function getStaticPaths() {
-  const entries = await getCollection('essays');
-  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+  const entries = (await getCollection('essays')).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+  );
+
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: {
+      entry,
+      // Titles and dates only — the sidebar never carries other essays' bodies.
+      essays: entries.map((e) => ({ id: e.id, title: e.data.title, date: e.data.date })),
+    },
+  }));
 }
 
-const { entry } = Astro.props;
+const { entry, essays } = Astro.props;
 const { Content } = await render(entry);
 
 // First real paragraph, trimmed, as the meta description.
@@ -28,15 +39,23 @@ const description = excerpt
   description={description}
   section="writing"
 >
-  <div class="min-h-[520px]">
-    <a
-      href="/writing/"
-      class="flex items-center gap-1 border-b border-line px-4 py-3 text-xs text-terracotta hover:underline"
-    >
-      <span aria-hidden="true">‹</span> all essays
-    </a>
-    <article class="p-6">
-      <Essay title={entry.data.title} date={entry.data.date} Content={Content} as="h1" />
-    </article>
+  <div class="min-h-[520px] md:flex md:h-[520px] md:min-h-0">
+    <EssayList
+      essays={essays}
+      currentId={entry.id}
+      class="hidden md:block md:w-[32%] md:overflow-y-auto md:border-r"
+    />
+
+    <div class="md:flex-1 md:overflow-y-auto">
+      <a
+        href="/writing/"
+        class="flex items-center gap-1 border-b border-line px-4 py-3 text-xs text-terracotta md:hidden"
+      >
+        <span aria-hidden="true">‹</span> all essays
+      </a>
+      <article class="p-6">
+        <Essay title={entry.data.title} date={entry.data.date} Content={Content} as="h1" />
+      </article>
+    </div>
   </div>
 </Layout>

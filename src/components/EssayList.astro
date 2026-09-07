@@ -1,0 +1,35 @@
+---
+import { formatEssayDate } from '../lib/date';
+
+interface Props {
+  essays: { id: string; title: string; date: Date }[];
+  /** Row to highlight as the one being read. */
+  currentId: string;
+  class?: string;
+}
+
+const { essays, currentId, class: className } = Astro.props;
+---
+
+{/*
+  Rows are always real links. Inside NotesApp its script intercepts plain
+  clicks to swap in place; on an essay's own page there is no such script,
+  so they simply navigate.
+*/}
+<div class:list={['border-line bg-shell p-3', className]}>
+  {
+    essays.map(({ id, title, date }) => (
+      <a
+        href={`/writing/${id}/`}
+        data-essay={id}
+        data-title={title}
+        aria-label={`${title}, ${formatEssayDate(date)}`}
+        aria-current={id === currentId ? 'true' : 'false'}
+        class="mb-[3px] block cursor-pointer rounded-lg p-2.5 text-left hover:bg-hover md:aria-[current=true]:bg-blush"
+      >
+        <span class="block text-xs font-semibold">{title}</span>
+        <span class="mt-0.5 block text-[10px] text-muted">{formatEssayDate(date)}</span>
+      </a>
+    ))
+  }
+</div>

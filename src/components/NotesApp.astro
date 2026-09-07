@@ -1,7 +1,7 @@
 ---
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import Essay from './Essay.astro';
-import { formatEssayDate } from '../lib/date';
+import EssayList from './EssayList.astro';
 
 export interface EssayEntry {
   id: string;
@@ -25,25 +25,11 @@ const { essays } = Astro.props;
 >
   <h1 class="sr-only">writing</h1>
 
-  <div
-    class="border-line bg-shell p-3 group-data-[view=detail]/notes:hidden md:block md:w-[32%] md:overflow-y-auto md:border-r"
-  >
-    {
-      essays.map(({ id, title, date }, i) => (
-        <a
-          href={`/writing/${id}/`}
-          data-essay={id}
-          data-title={title}
-          aria-label={`${title}, ${formatEssayDate(date)}`}
-          aria-current={i === 0 ? 'true' : 'false'}
-          class="mb-[3px] block cursor-pointer rounded-lg p-2.5 text-left hover:bg-hover md:aria-[current=true]:bg-blush"
-        >
-          <span class="block text-xs font-semibold">{title}</span>
-          <span class="mt-0.5 block text-[10px] text-muted">{formatEssayDate(date)}</span>
-        </a>
-      ))
-    }
-  </div>
+  <EssayList
+    essays={essays}
+    currentId={essays[0]?.id ?? ''}
+    class="group-data-[view=detail]/notes:hidden md:block md:w-[32%] md:overflow-y-auto md:border-r"
+  />
 
   <div class="hidden group-data-[view=detail]/notes:block md:block md:flex-1 md:overflow-y-auto">
     <button

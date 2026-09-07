@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Analytics from '../components/Analytics.astro';
 import TitleBar from '../components/TitleBar.astro';
 import type { Section } from '../components/TitleBar.astro';
 import { site } from '../data/about';
@@ -33,6 +34,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+
+    {import.meta.env.PROD && <Analytics />}
   </head>
   <body
     class="flex min-h-screen flex-col bg-sand px-5 py-8 font-sans text-ink lowercase antialiased"

@@ -1,0 +1,17 @@
+---
+// Google Analytics 4 — page views only, no custom events.
+// Rendered only in production builds; see Layout.astro.
+---
+
+<script
+  async
+  is:inline
+  src="https://www.googletagmanager.com/gtag/js?id=G-YHQ3W6H4PN"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-YHQ3W6H4PN');
+</script>

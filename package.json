@@ -1,15 +1,13 @@
 {
   "name": "thechristinawang",
-  "version": "1.0.0",
-  "description": "Learn all about my interest, experience, and projects.",
+  "description": "Personal site for thechristinawang.com",
+  "type": "module",
+  "private": true,
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@astrojs/mdx": "^8.0.0",
     "@fontsource-variable/inter": "^5.3.0",
@@ -17,8 +15,6 @@
     "astro": "^7.3.1",
     "tailwindcss": "^4.3.3"
   },
-  "type": "module",
-  "private": true,
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "typescript": "^6.0.3"

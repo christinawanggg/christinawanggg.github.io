@@ -1,0 +1,42 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Essay from '../../components/Essay.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('essays');
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+// First real paragraph, trimmed, as the meta description.
+const excerpt = entry.body
+  ?.split('\n')
+  .map((line) => line.trim())
+  .find((line) => line && !line.startsWith('#') && !line.startsWith('-'))
+  ?.replace(/[*_`>]/g, '');
+
+const description = excerpt
+  ? `${excerpt.slice(0, 155).trim()}${excerpt.length > 155 ? '…' : ''}`
+  : `an essay by christina wang: ${entry.data.title}.`;
+---
+
+<Layout
+  title={`${entry.data.title} — christina wang`}
+  description={description}
+  section="writing"
+>
+  <div class="min-h-[520px]">
+    <a
+      href="/writing/"
+      class="flex items-center gap-1 border-b border-line px-4 py-3 text-xs text-terracotta hover:underline"
+    >
+      <span aria-hidden="true">‹</span> all essays
+    </a>
+    <article class="p-6">
+      <Essay title={entry.data.title} date={entry.data.date} Content={Content} as="h1" />
+    </article>
+  </div>
+</Layout>

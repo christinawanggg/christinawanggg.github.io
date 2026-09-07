@@ -1,0 +1,20 @@
+---
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
+import { formatEssayDate } from '../lib/date';
+
+interface Props {
+  title: string;
+  date: Date;
+  Content: AstroComponentFactory;
+  /** h1 on an essay's own page; h2 in the writing index, which lists several. */
+  as?: 'h1' | 'h2';
+}
+
+const { title, date, Content, as: Heading = 'h1' } = Astro.props;
+---
+
+<Heading class="text-base font-bold">{title}</Heading>
+<p class="mt-1 mb-3.5 text-[11px] text-muted">{formatEssayDate(date)}</p>
+<div class="essay text-[13px] leading-[1.7] text-stone">
+  <Content />
+</div>

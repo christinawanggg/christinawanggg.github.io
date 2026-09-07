@@ -1,5 +1,7 @@
 ---
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
+import Essay from './Essay.astro';
+import { formatEssayDate } from '../lib/date';
 
 export interface EssayEntry {
   id: string;
@@ -13,11 +15,6 @@ interface Props {
 }
 
 const { essays } = Astro.props;
-
-const formatDate = (date: Date) =>
-  date
-    .toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })
-    .toLowerCase();
 ---
 
 {/* data-view drives the mobile push navigation; md+ always shows both panes. */}
@@ -26,28 +23,28 @@ const formatDate = (date: Date) =>
   data-view="list"
   class="group/notes min-h-[520px] md:flex md:h-[520px] md:min-h-0"
 >
+  <h1 class="sr-only">writing</h1>
+
   <div
     class="border-line bg-shell p-3 group-data-[view=detail]/notes:hidden md:block md:w-[32%] md:overflow-y-auto md:border-r"
   >
     {
       essays.map(({ id, title, date }, i) => (
-        <button
-          type="button"
+        <a
+          href={`/writing/${id}/`}
           data-essay={id}
-          aria-label={`${title}, ${formatDate(date)}`}
+          aria-label={`${title}, ${formatEssayDate(date)}`}
           aria-current={i === 0 ? 'true' : 'false'}
-          class="mb-[3px] w-full cursor-pointer rounded-lg p-2.5 text-left hover:bg-hover md:aria-[current=true]:bg-blush"
+          class="mb-[3px] block cursor-pointer rounded-lg p-2.5 text-left hover:bg-hover md:aria-[current=true]:bg-blush"
         >
           <span class="block text-xs font-semibold">{title}</span>
-          <span class="mt-0.5 block text-[10px] text-muted">{formatDate(date)}</span>
-        </button>
+          <span class="mt-0.5 block text-[10px] text-muted">{formatEssayDate(date)}</span>
+        </a>
       ))
     }
   </div>
 
-  <div
-    class="hidden group-data-[view=detail]/notes:block md:block md:flex-1 md:overflow-y-auto"
-  >
+  <div class="hidden group-data-[view=detail]/notes:block md:block md:flex-1 md:overflow-y-auto">
     <button
       type="button"
       data-notes-back
@@ -59,11 +56,7 @@ const formatDate = (date: Date) =>
     {
       essays.map(({ id, title, date, Content }, i) => (
         <article data-detail={id} class="p-6" hidden={i !== 0}>
-          <h1 class="text-base font-bold">{title}</h1>
-          <p class="mt-1 mb-3.5 text-[11px] text-muted">{formatDate(date)}</p>
-          <div class="essay text-[13px] leading-[1.7] text-stone">
-            <Content />
-          </div>
+          <Essay title={title} date={date} Content={Content} as="h2" />
         </article>
       ))
     }
@@ -73,12 +66,17 @@ const formatDate = (date: Date) =>
 <script>
   const root = document.querySelector<HTMLElement>('[data-notes]');
   if (root) {
-    const items = root.querySelectorAll<HTMLButtonElement>('[data-essay]');
+    const items = root.querySelectorAll<HTMLAnchorElement>('[data-essay]');
     const details = root.querySelectorAll<HTMLElement>('[data-detail]');
     const back = root.querySelector<HTMLButtonElement>('[data-notes-back]');
 
     items.forEach((item) => {
-      item.addEventListener('click', () => {
+      item.addEventListener('click', (event) => {
+        // Each row is a real link to the essay's own page, so it stays
+        // crawlable and cmd-clickable. Plain clicks swap in place instead.
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
+        event.preventDefault();
+
         items.forEach((i) => i.setAttribute('aria-current', String(i === item)));
         details.forEach((d) => {
           d.hidden = d.dataset.detail !== item.dataset.essay;

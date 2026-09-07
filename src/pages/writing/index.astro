@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
-import Layout from '../layouts/Layout.astro';
-import NotesApp from '../components/NotesApp.astro';
+import Layout from '../../layouts/Layout.astro';
+import NotesApp from '../../components/NotesApp.astro';
 
 const entries = (await getCollection('essays')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),

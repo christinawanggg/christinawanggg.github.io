@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="page not found — christina wang"
+  description="that page doesn't exist."
+>
+  <div
+    class="flex min-h-[520px] flex-col items-center justify-center bg-linear-160 from-[#fdf3e7] to-[#ffe4c7] p-8 text-center"
+  >
+    <span class="text-4xl" aria-hidden="true">🗺️</span>
+    <h1 class="mt-4 text-2xl font-bold text-ink">page not found</h1>
+    <p class="mt-1.5 max-w-[42ch] text-[13px] text-taupe">
+      that link doesn't go anywhere — it may have moved, or never existed.
+    </p>
+    <a
+      href="/"
+      class="mt-6 rounded-full border border-edge bg-white px-4 py-2 text-xs text-drift transition-colors hover:bg-cream"
+    >
+      <span aria-hidden="true">‹</span> back to home
+    </a>
+  </div>
+</Layout>

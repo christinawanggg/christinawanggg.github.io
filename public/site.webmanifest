@@ -1,0 +1,11 @@
+{
+  "name": "christina wang",
+  "short_name": "christina wang",
+  "icons": [
+    { "src": "/favicon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/favicon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "theme_color": "#c1633a",
+  "background_color": "#eee3d3",
+  "display": "browser"
+}

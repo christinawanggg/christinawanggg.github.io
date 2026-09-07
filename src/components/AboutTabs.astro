@@ -74,8 +74,9 @@ const tabs = [
               class="text-[13px] text-bark hover:text-terracotta"
               target={href.startsWith('http') ? '_blank' : undefined}
               rel={href.startsWith('http') ? 'me noopener noreferrer' : undefined}
+              data-email={href.startsWith('mailto:') ? '' : undefined}
             >
-              → {label}
+              → <span data-link-label>{label}</span>
             </a>
           </li>
         ))
@@ -97,6 +98,29 @@ const tabs = [
           p.hidden = p.dataset.panel !== tab.dataset.tab;
         });
       });
+    });
+
+    // A mailto does nothing for anyone without a mail app registered, so also
+    // drop the address on the clipboard. The mailto still fires for everyone else.
+    const email = root.querySelector<HTMLAnchorElement>('[data-email]');
+    const label = email?.querySelector<HTMLElement>('[data-link-label]');
+    let revert: ReturnType<typeof setTimeout>;
+
+    email?.addEventListener('click', async () => {
+      if (!label) return;
+      const address = email.href.replace(/^mailto:/, '');
+      clearTimeout(revert);
+      try {
+        await navigator.clipboard.writeText(address);
+      } catch {
+        // Clipboard blocked — show the address instead so it can be selected.
+        label.textContent = address;
+        return;
+      }
+      label.textContent = 'copied to clipboard';
+      revert = setTimeout(() => {
+        label.textContent = 'email';
+      }, 2000);
     });
   }
 </script>

@@ -11,7 +11,7 @@ export const work = [
     body: 'sequoia-backed startup building real social intuition into your calendar, so eventually nobody has to think about scheduling again.',
   },
   {
-    icon: '💼',
+    icon: '💻',
     role: 'software engineer, salesforce',
     body: 'reinvented the salesforce setup experience to give admins their time back. learned how software gets built at the largest scale.',
   },

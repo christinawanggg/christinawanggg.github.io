@@ -1,0 +1,24 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import NotesApp from '../components/NotesApp.astro';
+
+const entries = (await getCollection('essays')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const essays = await Promise.all(
+  entries.map(async (entry) => {
+    const { Content } = await render(entry);
+    return { id: entry.id, title: entry.data.title, date: entry.data.date, Content };
+  }),
+);
+---
+
+<Layout
+  title="writing — christina wang"
+  description="essays by christina wang."
+  section="writing"
+>
+  <NotesApp essays={essays} />
+</Layout>

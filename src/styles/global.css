@@ -1,0 +1,54 @@
+@import '@fontsource-variable/inter';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* terracotta palette */
+  --color-sand: #eee3d3;
+  --color-paper: #fffdf9;
+  --color-shell: #fdfaf5;
+  --color-cream: #f6f1e9;
+  --color-hover: #f8f1e6;
+  --color-line: #f0e5d4;
+  --color-edge: #ddc9b4;
+  --color-blush: #ffe4d6;
+  --color-terracotta: #c1633a;
+
+  --color-ink: #2b2622;
+  --color-stone: #5c5348;
+  --color-bark: #6b5541;
+  --color-taupe: #7a6a56;
+  --color-drift: #8a7a63;
+  --color-clay: #a89b8c;
+  --color-muted: #b0a08a;
+
+  --shadow-window: 0 12px 40px rgb(0 0 0 / 0.12);
+  --shadow-icon: 0 6px 16px rgb(0 0 0 / 0.08);
+}
+
+/* Rendered markdown from the essay collection. Scoped to .essay so it can't
+   leak into the rest of the site. */
+.essay > * {
+  margin: 0 0 12px;
+}
+.essay h2 {
+  font-weight: 700;
+  margin: 18px 0 6px;
+  color: var(--color-ink);
+}
+.essay > :first-child {
+  margin-top: 0;
+}
+.essay ul {
+  list-style: disc;
+  margin: 4px 0 12px 18px;
+  padding: 0;
+}
+.essay li {
+  margin-bottom: 5px;
+}
+.essay a {
+  color: var(--color-terracotta);
+  text-decoration: underline;
+}

@@ -1,0 +1,102 @@
+---
+import { work, living, links } from '../data/about';
+
+const tabs = [
+  { id: 'work', label: 'work' },
+  { id: 'living', label: 'living' },
+  { id: 'findme', label: 'find me' },
+];
+---
+
+<div class="min-h-[520px] overflow-y-auto p-6 sm:p-[30px]" data-about-tabs>
+  <div class="mb-[22px] flex gap-2" role="tablist" aria-label="about sections">
+    {
+      tabs.map(({ id, label }, i) => (
+        <button
+          type="button"
+          role="tab"
+          id={`tab-${id}`}
+          data-tab={id}
+          aria-controls={`panel-${id}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          class="cursor-pointer rounded-2xl bg-cream px-3.5 py-1.5 text-xs text-clay aria-selected:bg-blush aria-selected:font-semibold aria-selected:text-terracotta"
+        >
+          {label}
+        </button>
+      ))
+    }
+  </div>
+
+  <section role="tabpanel" id="panel-work" aria-labelledby="tab-work" data-panel="work">
+    {
+      work.map(({ icon, role, body }) => (
+        <div class="mb-[18px]">
+          <h2 class="text-[13px] font-bold">
+            <span aria-hidden="true" class="mr-1">{icon}</span>{role}
+          </h2>
+          <p class="mt-[3px] max-w-[62ch] text-[13px] leading-relaxed text-stone">{body}</p>
+        </div>
+      ))
+    }
+  </section>
+
+  <section
+    role="tabpanel"
+    id="panel-living"
+    aria-labelledby="tab-living"
+    data-panel="living"
+    hidden
+  >
+    <ul class="flex flex-col gap-2">
+      {
+        living.map((line) => (
+          <li class="max-w-[62ch] self-start rounded-2xl bg-cream px-3.5 py-[9px] text-xs">
+            {line}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section
+    role="tabpanel"
+    id="panel-findme"
+    aria-labelledby="tab-findme"
+    data-panel="findme"
+    hidden
+  >
+    <ul class="flex flex-col gap-2">
+      {
+        links.map(({ label, href }) => (
+          <li>
+            <a
+              href={href}
+              class="text-[13px] text-bark hover:text-terracotta"
+              target={href.startsWith('http') ? '_blank' : undefined}
+              rel={href.startsWith('http') ? 'me noopener noreferrer' : undefined}
+            >
+              → {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</div>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-about-tabs]');
+  if (root) {
+    const tabs = root.querySelectorAll<HTMLButtonElement>('[data-tab]');
+    const panels = root.querySelectorAll<HTMLElement>('[data-panel]');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((t) => t.setAttribute('aria-selected', String(t === tab)));
+        panels.forEach((p) => {
+          p.hidden = p.dataset.panel !== tab.dataset.tab;
+        });
+      });
+    });
+  }
+</script>

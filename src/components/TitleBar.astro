@@ -1,0 +1,32 @@
+---
+export type Section = 'about' | 'writing';
+
+interface Props {
+  section: Section;
+}
+
+const { section } = Astro.props;
+
+// Each section links back to the desktop and across to the other one.
+const other: Record<Section, { label: Section; href: string }> = {
+  about: { label: 'writing', href: '/writing/' },
+  writing: { label: 'about', href: '/about/' },
+};
+
+const across = other[section];
+---
+
+<div
+  class="grid grid-cols-3 items-center border-b border-line bg-cream/60 px-4 py-2.5 text-xs"
+>
+  <a href="/" class="justify-self-start text-terracotta hover:underline">
+    <span aria-hidden="true">‹</span> home
+  </a>
+  <span class="justify-self-center font-semibold text-ink">{section}</span>
+  <a
+    href={across.href}
+    class="justify-self-end text-drift transition-colors hover:text-terracotta"
+  >
+    {across.label} <span aria-hidden="true">›</span>
+  </a>
+</div>

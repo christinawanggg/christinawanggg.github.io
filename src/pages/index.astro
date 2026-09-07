@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/about';
+
+const icons = [
+  { emoji: '🗂️', label: 'about', href: '/about/' },
+  { emoji: '✍️', label: 'writing', href: '/writing/' },
+];
+---
+
+<Layout title="christina wang">
+  <div
+    class="flex min-h-[520px] flex-col justify-center bg-linear-160 from-[#fdf3e7] to-[#ffe4c7] p-8 sm:p-10"
+  >
+    <div class="mb-10 text-center">
+      <h1 class="text-2xl font-bold text-ink">{site.name}</h1>
+      <p class="mt-1.5 text-[13px] text-taupe">{site.tagline}</p>
+    </div>
+
+    <div class="flex justify-center gap-10">
+      {
+        icons.map(({ emoji, label, href }) => (
+          <a href={href} class="group text-center">
+            <div class="flex size-16 items-center justify-center rounded-2xl bg-white/75 text-2xl shadow-icon transition-transform group-hover:-translate-y-0.5">
+              <span aria-hidden="true">{emoji}</span>
+            </div>
+            <div class="mt-2 text-[11px] text-bark">{label}</div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Layout>

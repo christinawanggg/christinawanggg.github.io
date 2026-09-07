@@ -33,6 +33,7 @@ const { essays } = Astro.props;
         <a
           href={`/writing/${id}/`}
           data-essay={id}
+          data-title={title}
           aria-label={`${title}, ${formatEssayDate(date)}`}
           aria-current={i === 0 ? 'true' : 'false'}
           class="mb-[3px] block cursor-pointer rounded-lg p-2.5 text-left hover:bg-hover md:aria-[current=true]:bg-blush"
@@ -69,6 +70,30 @@ const { essays } = Astro.props;
     const items = root.querySelectorAll<HTMLAnchorElement>('[data-essay]');
     const details = root.querySelectorAll<HTMLElement>('[data-detail]');
     const back = root.querySelector<HTMLButtonElement>('[data-notes-back]');
+    const indexTitle = document.title;
+
+    /** Select an essay, or pass null for the index (mobile list view). */
+    const show = (id: string | null) => {
+      const target = id ?? items[0]?.dataset.essay ?? null;
+      const row = [...items].find((i) => i.dataset.essay === target);
+
+      items.forEach((i) => i.setAttribute('aria-current', String(i.dataset.essay === target)));
+      details.forEach((d) => {
+        d.hidden = d.dataset.detail !== target;
+      });
+      root.dataset.view = id ? 'detail' : 'list';
+      document.title = id && row?.dataset.title ? `${row.dataset.title} — christina wang` : indexTitle;
+    };
+
+    // Analytics counts one page_view per page load. Swapping an essay in place
+    // never reloads, so these reads have to report themselves or go uncounted.
+    const trackView = () => {
+      const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+      gtag?.('event', 'page_view', {
+        page_title: document.title,
+        page_location: location.href,
+      });
+    };
 
     items.forEach((item) => {
       item.addEventListener('click', (event) => {
@@ -76,18 +101,25 @@ const { essays } = Astro.props;
         // crawlable and cmd-clickable. Plain clicks swap in place instead.
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
         event.preventDefault();
+        if (location.pathname === new URL(item.href).pathname) return;
 
-        items.forEach((i) => i.setAttribute('aria-current', String(i === item)));
-        details.forEach((d) => {
-          d.hidden = d.dataset.detail !== item.dataset.essay;
-        });
-        root.dataset.view = 'detail';
+        show(item.dataset.essay ?? null);
+        history.pushState(null, '', item.href);
+        trackView();
         window.scrollTo({ top: 0 });
       });
     });
 
     back?.addEventListener('click', () => {
-      root.dataset.view = 'list';
+      show(null);
+      history.pushState(null, '', '/writing/');
+      trackView();
+    });
+
+    // Keep the back/forward buttons in step with what's on screen.
+    addEventListener('popstate', () => {
+      const match = location.pathname.match(/^\/writing\/(.+?)\/?$/);
+      show(match ? match[1] : null);
     });
   }
 </script>
